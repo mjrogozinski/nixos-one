@@ -6,6 +6,10 @@ build:
 just-run:
 	QEMU_KERNEL_PARAMS=console=ttyS0 ./result/bin/run-nixos-vm -nographic; reset
 
+.PHONY: krun
+krun: build
+	kitty --detach make just-run
+
 .PHONY: run
 run: build just-run
 
