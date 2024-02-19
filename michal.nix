@@ -1,5 +1,6 @@
 { pkgs, ... }:
-let masterUser = "michal";
+let
+masterUser = "michal";
 in
 {
   imports = [
