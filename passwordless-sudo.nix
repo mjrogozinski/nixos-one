@@ -1,7 +1,7 @@
-{ ... }:
+{ username,  ... }:
 {
   security.sudo.extraRules= [
-    {  users = [ "michal" ];
+    {  users = [ username ];
       commands = [
          { command = "ALL" ;
            options= [ "NOPASSWD" ];

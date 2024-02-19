@@ -1,8 +1,13 @@
 { pkgs, ... }:
+let masterUser = "michal";
+in
 {
-  imports = [ ./passwordless-sudo.nix (import ./enable-sudo.nix { username = "michal"; })];
+  imports = [
+    (import ./enable-sudo.nix { username = masterUser; })
+    (import ./passwordless-sudo.nix { username = masterUser; })
+  ];
 
-  users.users.michal = {
+  users.users.${masterUser} = {
     isNormalUser = true;
     packages = with pkgs; [
       cowsay
@@ -10,8 +15,8 @@
       home-manager
       neovim
     ];
-    initialPassword = "michal";
+    initialPassword = masterUser;
   };
 
-  services.getty.autologinUser = "michal";
+  services.getty.autologinUser = masterUser;
 }
