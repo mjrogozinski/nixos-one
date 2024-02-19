@@ -1,10 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ./passwordless-sudo.nix];
+  imports = [ ./passwordless-sudo.nix (import ./enable-sudo.nix { username = "michal"; })];
 
   users.users.michal = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       cowsay
       lolcat
@@ -13,5 +12,6 @@
     ];
     initialPassword = "michal";
   };
+
   services.getty.autologinUser = "michal";
 }

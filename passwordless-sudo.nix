@@ -1,6 +1,5 @@
 { ... }:
 {
-  # sudo without password
   security.sudo.extraRules= [
     {  users = [ "michal" ];
       commands = [
