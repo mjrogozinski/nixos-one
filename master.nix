@@ -12,6 +12,7 @@
       lolcat
       home-manager
       neovim
+      git
     ];
     initialPassword = username;
   };
